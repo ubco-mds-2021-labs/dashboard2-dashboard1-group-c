@@ -132,3 +132,4 @@ dmypy.json
 # R studio stuff
 *.Rproj
 *.html
+.Rhistory
