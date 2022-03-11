@@ -2,6 +2,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashBootstrapComponents)
+source("src/data.R")
 
 
 #Dropdown for province
@@ -22,7 +23,7 @@ province <- dbcRow(
                            list(label ="Quebec", value= "Quebec"),
                            list(label ="Saskatchewan", value= "Saskatchewan"),
                            list(label ="Yukon", value= "Yukon")),
-            value = 'Alberta'
+            value = NULL
         )
     )
 )
@@ -45,7 +46,8 @@ layout <- dbcContainer(
     dbcRow(
         list(
             province,
-            year
+            year,
+            map
         )
-    ), style = list('max-width' = '50%') 
+    ), style = list('max-width' = '50%')
 )

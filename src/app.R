@@ -12,4 +12,13 @@ app |> set_layout(
 
 app |> set_layout(layout)
 
+app$callback(
+    output('ggplot_map', 'figure'),
+    list(input('province', 'value'),
+         input('year', 'value')),
+    function(prov, year) {
+        return(plot_province(prov, year))
+})
+
 app |> run_app()
+
