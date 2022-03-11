@@ -13,12 +13,10 @@ app |> set_layout(
 app |> set_layout(layout)
 
 app$callback(
-    output('ggplot_map', 'figure'),
-    list(input('province', 'value'),
-         input('year', 'value')),
-    function(prov, year) {
-        return(plot_province(prov, year))
-})
+		output('ggplot_total_capacity', 'figure'),
+		list(input('province', 'value')),
+		function(prov) {
+				return(plot_total_capacity(prov))
+	})
 
 app |> run_app()
-
