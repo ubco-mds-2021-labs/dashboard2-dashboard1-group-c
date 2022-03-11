@@ -4,6 +4,7 @@ library(dashHtmlComponents)
 library(dashBootstrapComponents)
 source("src/data.R")
 
+
 #Dropdown for province
 province <- dbcRow(
     list(
