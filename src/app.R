@@ -12,13 +12,28 @@ app |> set_layout(
 
 app |> set_layout(layout)
 
+# Map callback
 app$callback(
     output('ggplot_map', 'figure'),
-    list(input('province', 'value'),
-         input('year', 'value')),
+    list(
+        input('province', 'value'),
+        input('year', 'value')
+    ),
     function(prov, year) {
         return(plot_province(prov, year))
-})
+    }
+)
+
+# Count line chart callback
+app$callback(
+    output("count-graph", "figure"),
+    list(
+        input("province", "value")
+    ),
+    function(prov) {
+        return(time_count(prov))
+    }
+)
 
 app |> run_app()
 
