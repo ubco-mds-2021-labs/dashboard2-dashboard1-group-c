@@ -1,3 +1,6 @@
+library(plotly)
+library(ggplot2)
+
 source("src/data.R")
 
 
@@ -47,6 +50,21 @@ time_count <- function(prov = NULL) {
     }
     years <- na.omit(years)
     counts <- na.omit(counts)
+    data <- tibble(year = years, count = counts)
     
-    return(tibble(year = years, count = counts))
+    # Create chart
+    if (is.null(prov))
+        title_string = "Cumulative Turbine Count over Time in Canada"
+    else
+        title_string = sprintf("Cumulative Turbine Count over Time in %s", prov)
+    plot <- ggplot(data) + 
+        aes(
+            x = year,
+            y = count
+        ) +
+        geom_line(color = "blue") +
+        geom_point(color = "blue", size = 1) +
+        ggtitle(title_string)
+    
+    return(ggplotly(plot))
 }
