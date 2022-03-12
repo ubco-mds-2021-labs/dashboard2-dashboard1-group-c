@@ -47,7 +47,8 @@ layout <- dbcContainer(
         list(
             province,
             year,
-            map
+            map,
+            dccGraph(id = "count-graph", figure = time_count(NULL))
         )
     ), style = list('max-width' = '50%')
 )
