@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashBootstrapComponents)
 source("src/data.R")
-
+source("src/total_capacity.R")
 
 #Dropdown for province
 province <- dbcRow(
@@ -48,7 +48,8 @@ layout <- dbcContainer(
             province,
             year,
             map,
-            dccGraph(id = "count-graph", figure = time_count(NULL))
+            dccGraph(id = "count-graph", figure = time_count(NULL)),
+            total_capacity
         )
     ), style = list('max-width' = '50%')
 )

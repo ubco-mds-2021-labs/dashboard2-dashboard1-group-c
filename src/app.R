@@ -6,11 +6,19 @@ source("src/time_count.R")
 source("src/total_capacity.R")
 
 app <- dash_app()
-app |> set_layout(
-    h1("Hello, Dash!")
-)
 
 app |> set_layout(layout)
+
+# Capacity bar chart callback
+app$callback(
+		output('ggplot_total_capacity', 'figure'),
+		list(
+        input('province', 'value')
+    ),
+		function(prov) {
+				return(plot_total_capacity(prov))
+	  }
+)
 
 # Map callback
 app$callback(
@@ -36,4 +44,3 @@ app$callback(
 )
 
 app |> run_app()
-
