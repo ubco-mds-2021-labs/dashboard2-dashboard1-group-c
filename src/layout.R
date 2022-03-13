@@ -57,7 +57,11 @@ sidebar <- div(
                 
             ),
             dbcRow(
-                div(year)
+                div(year),
+                br(),
+                br(),
+                br(),
+                br(),
                 
             )
         ),
@@ -69,20 +73,36 @@ sidebar <- div(
 row1 <- div(
     style = list(
         borderBottom = "thin lightgrey solid",
-        backgroundColor = "#d8f1c0",
-        padding = "10px 5px"
+        backgroundColor = "grey"
+        
     ),
     dbcRow(
         list(
             dbcCol(
                 div(
-                    map
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    map,
+                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
                 ),
                 md = 6
             ),
             dbcCol(
                 div(
-                    total_capacity
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    total_capacity,
+                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
                 ),
                 md = 6
             )
@@ -95,35 +115,30 @@ row1 <- div(
 row2 <- div(
     style = list(
         borderBottom = "thin lightgrey solid",
-        backgroundColor = "#d8f1c0",
-        padding = "10px 5px"
+        backgroundColor = "grey"
+        
     ),
     dbcRow(
         list(
             dbcCol(
                 div(
-                    dccGraph(id = "count-graph", figure = time_count(NULL))
-                ),
-                md = 6
-            ),
-            dbcCol(
-                div(
-                    #total_capacity # Replace this with Tingwen's viz
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    br(),
+                    dccGraph(id = "count-graph", figure = time_count(NULL)),
+                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
                 ),
                 md = 6
             )
+            
         )
         
     )
 )
 
-layout <- dbcContainer(
-    dbcRow(
-        list(
-            dbcRow(sidebar),
-            dbcRow(row1),
-            dbcRow(row2)
-           
-        )
-    ), style = list('max-width' = '100%')
-)
+layout <- div(list(sidebar, row1, row2))
+    

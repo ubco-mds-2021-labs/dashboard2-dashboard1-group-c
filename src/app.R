@@ -5,7 +5,7 @@ source("src/models.R")
 source("src/time_count.R")
 source("src/total_capacity.R")
 
-app <- dash_app()
+app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 app |> set_layout(layout)
 
