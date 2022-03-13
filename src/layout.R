@@ -42,14 +42,88 @@ year <- dbcRow(
     )
 )
 
+
+
+sidebar <- div(
+    dbcRow(
+        list(
+            dbcRow(
+                div("WIND TURBINES"), 
+                style = list("color" = "black", "textAlign" = "center",  "font-size" = 40, "margin-top" = 10), 
+                
+            ),
+            dbcRow(
+                div(province)
+                
+            ),
+            dbcRow(
+                div(year)
+                
+            )
+        ),
+        style = list("background-color" = "grey", "height" = 70)
+    )
+)
+
+
+row1 <- div(
+    style = list(
+        borderBottom = "thin lightgrey solid",
+        backgroundColor = "#d8f1c0",
+        padding = "10px 5px"
+    ),
+    dbcRow(
+        list(
+            dbcCol(
+                div(
+                    map
+                ),
+                md = 6
+            ),
+            dbcCol(
+                div(
+                    total_capacity
+                ),
+                md = 6
+            )
+        )
+        
+    )
+)
+
+
+row2 <- div(
+    style = list(
+        borderBottom = "thin lightgrey solid",
+        backgroundColor = "#d8f1c0",
+        padding = "10px 5px"
+    ),
+    dbcRow(
+        list(
+            dbcCol(
+                div(
+                    dccGraph(id = "count-graph", figure = time_count(NULL))
+                ),
+                md = 6
+            ),
+            dbcCol(
+                div(
+                    #total_capacity # Replace this with Tingwen's viz
+                ),
+                md = 6
+            )
+        )
+        
+    )
+)
+
 layout <- dbcContainer(
     dbcRow(
         list(
-            province,
-            year,
-            map,
-            dccGraph(id = "count-graph", figure = time_count(NULL)),
-            total_capacity
+            dbcRow(sidebar),
+            dbcRow(row1),
+            dbcRow(row2)
+           
         )
-    ), style = list('max-width' = '50%')
+    ), style = list('max-width' = '100%')
 )
