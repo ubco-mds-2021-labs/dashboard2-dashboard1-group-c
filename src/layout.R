@@ -4,6 +4,8 @@ library(dashHtmlComponents)
 library(dashBootstrapComponents)
 source("src/data.R")
 source("src/total_capacity.R")
+source("src/time_count.R")
+source('src/map.R')
 
 #Dropdown for province
 province <- dbcRow(
@@ -43,102 +45,49 @@ year <- dbcRow(
 )
 
 
-
-sidebar <- div(
-    dbcRow(
-        list(
-            dbcRow(
-                div("WIND TURBINES"), 
-                style = list("color" = "black", "textAlign" = "center",  "font-size" = 40, "margin-top" = 10), 
-                
-            ),
-            dbcRow(
-                div(province)
-                
-            ),
-            dbcRow(
-                div(year),
-                br(),
-                br(),
-                br(),
-                br(),
-                
-            )
-        ),
-        style = list("background-color" = "grey", "height" = 70)
-    )
-)
-
-
 row1 <- div(
-    style = list(
-        borderBottom = "thin lightgrey solid",
-        backgroundColor = "grey"
-        
-    ),
-    dbcRow(
-        list(
-            dbcCol(
-                div(
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    map,
-                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
-                ),
-                md = 6
-            ),
-            dbcCol(
-                div(
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    total_capacity,
-                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
-                ),
-                md = 6
+    list(
+        dbcRow(
+            list(
+                dbcCol(
+                    list(
+                        dbcRow(div("WIND TURBINES"), style = list("color" = "black", "textAlign" = "left",  "font-size" = 40, "margin-top" = 10)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("This is a data visualization app that allows members of Natural Resources Canada planning committees to visually explore a dataset outlining existing windpower capacity in Canada.")),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("Controls"), style = list("color" = "black", "textAlign" = "left",  "font-size" = 30, "margin-top" = 10)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("Select the province to get the information about wind turbines in that province. Also, slider lets you select the desired year so that cumulative count and geographic location of turbine can be seen for that year.")),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div(province)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div(year)),
+                        dbcRow(div(br(),
+                                   br()))
+                        
+                    )
+                ,style = list("background-color" = "grey")),
+                dbcCol(div(map)),
+                dbcCol(div(total_capacity))
             )
         )
-        
     )
 )
-
 
 row2 <- div(
-    style = list(
-        borderBottom = "thin lightgrey solid",
-        backgroundColor = "grey"
-        
-    ),
-    dbcRow(
-        list(
-            dbcCol(
-                div(
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    br(),
-                    dccGraph(id = "count-graph", figure = time_count(NULL)),
-                    style = list(width = "80%", padding = "10px 5px", backgroundColor = "grey") 
-                ),
-                md = 6
+    list(
+        dbcRow(
+            list(
+                dbcCol(style = list("background-color" = "grey")),
+                dbcCol(div(line))
             )
-            
         )
-        
     )
 )
-
-layout <- div(list(sidebar, row1, row2))
+layout <- div(list(row1,row2))
     

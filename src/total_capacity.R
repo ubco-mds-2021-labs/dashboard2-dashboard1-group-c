@@ -12,7 +12,9 @@ plot_total_capacity <- function(prov){
 	if(is.null(prov)){
 		prov="Alberta"
 	}
-	
+	else{
+	    prov = prov
+	}
 	plot <- ggplot(province, aes(x = reorder(`Province/Territory`,Turbine_rate), 
 														 y = Turbine_rate, fill=ifelse(`Province/Territory`==prov, 'red', 'black'))) +
 														 geom_bar(stat = "identity")+coord_flip() +

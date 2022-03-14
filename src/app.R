@@ -44,14 +44,14 @@ app$callback(
 )
 
 # Count Model Pie Chart Callback
-app$callback(
-  output("ggplot_model_count", "figure"),
-  list(
-    input("province", "value")
-  ),
-  function(prov) {
-    return(plot_model(prov))
-  }
-)
-
+# app$callback(
+#   output("ggplot_model_count", "figure"),
+#   list(
+#     input("province", "value")
+#   ),
+#   function(prov) {
+#     return(plot_model(prov))
+#   }
+# )
+# app$run_server(debug = T)
 app |> run_app()

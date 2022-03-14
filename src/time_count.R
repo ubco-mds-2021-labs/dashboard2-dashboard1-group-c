@@ -68,3 +68,4 @@ time_count <- function(prov = NULL) {
     
     return(ggplotly(plot))
 }
+line <- dccGraph(id = "count-graph", figure = time_count(NULL))
