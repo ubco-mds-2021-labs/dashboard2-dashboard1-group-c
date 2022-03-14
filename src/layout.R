@@ -6,6 +6,7 @@ source("src/data.R")
 source("src/total_capacity.R")
 source("src/time_count.R")
 source('src/map.R')
+source('src/models.R')
 
 #Dropdown for province
 province <- dbcRow(
@@ -62,14 +63,7 @@ row1 <- div(
                                    br())),
                         dbcRow(div("Select the province to get the information about wind turbines in that province. Also, slider lets you select the desired year so that cumulative count and geographic location of turbine can be seen for that year.")),
                         dbcRow(div(br(),
-                                   br())),
-                        dbcRow(div(province)),
-                        dbcRow(div(br(),
-                                   br())),
-                        dbcRow(div(year)),
-                        dbcRow(div(br(),
                                    br()))
-                        
                     )
                 ,style = list("background-color" = "grey")),
                 dbcCol(div(map)),
@@ -83,8 +77,18 @@ row2 <- div(
     list(
         dbcRow(
             list(
-                dbcCol(style = list("background-color" = "grey")),
-                dbcCol(div(line))
+                dbcCol(
+                    list(
+                        dbcRow(div(province)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div(year)),
+                        dbcRow(div(br(),
+                                   br()))
+                    ),
+                    style = list("background-color" = "grey")),
+                dbcCol(div(line)),
+                dbcCol(div(bar_plot))
             )
         )
     )
