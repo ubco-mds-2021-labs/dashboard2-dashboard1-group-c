@@ -24,6 +24,6 @@ plot_model <- function(prov){
 }
 
 model_viz <- plot_model(prov = NULL)
-bar_plot<- dccGraph(id='ggplot_bar',figure = plot_model(prov = NULL))
+bar_plot<- dccGraph(id='ggplot_bar',figure = model_viz)
 
   

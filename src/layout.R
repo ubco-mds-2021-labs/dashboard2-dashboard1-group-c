@@ -26,7 +26,7 @@ province <- dbcRow(
                            list(label ="Quebec", value= "Quebec"),
                            list(label ="Saskatchewan", value= "Saskatchewan"),
                            list(label ="Yukon", value= "Yukon")),
-            value = NULL
+            value = 'Alberta'
         )
     )
 )
