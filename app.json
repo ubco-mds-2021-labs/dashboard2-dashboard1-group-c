@@ -1,0 +1,9 @@
+{
+  "name": "DATA551 Milestone3",
+  "description": "This is an attempt to deploy our DashR app on Heroku.",
+  "keywords": [
+    "heroku",
+    "R deployment",
+    "Dash R"
+  ],
+}
