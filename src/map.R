@@ -5,10 +5,11 @@ library(plotly)
 
 wind <- get_data()
 
-path <- file.path(here(), "data", "georef-canada-province.geojson")
-sf_gb <- st_read(path, quiet = TRUE)
+
 
 plot_province <- function(prov, year){
+    path <- file.path(here(), "data", "georef-canada-province.geojson")
+    sf_gb <- st_read(path, quiet = TRUE)
     if (is.null(prov)) {
         region <- sf_gb
         wind_province <- wind %>% filter(`Commissioning date`<= year)

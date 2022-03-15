@@ -1,11 +1,12 @@
 library(dash)
-source("src/map.R")
-source("src/models.R")
-source("src/time_count.R")
+source("src/data.R")
+source('src/layout.R')
+source('src/models.R')
 source("src/total_capacity.R")
-source("src/layout.R")
+source("src/time_count.R")
+source('src/map.R')
 
-app <- dash_app()
+app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
 app |> set_layout(layout)
 
@@ -43,5 +44,16 @@ app$callback(
     }
 )
 
-# app |> run_app()
+# Count Model bar Chart Callback
+app$callback(
+    output("ggplot_bar", "figure"),
+    list(
+        input("province", "value")
+    ),
+    function(prov) {
+        return(plot_model(prov))
+    }
+)
+
+
 app$run_server(host = '0.0.0.0')

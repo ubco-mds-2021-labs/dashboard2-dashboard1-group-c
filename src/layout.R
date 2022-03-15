@@ -4,6 +4,9 @@ library(dashHtmlComponents)
 library(dashBootstrapComponents)
 source("src/data.R")
 source("src/total_capacity.R")
+source("src/time_count.R")
+source('src/map.R')
+source('src/models.R')
 
 #Dropdown for province
 province <- dbcRow(
@@ -23,7 +26,7 @@ province <- dbcRow(
                            list(label ="Quebec", value= "Quebec"),
                            list(label ="Saskatchewan", value= "Saskatchewan"),
                            list(label ="Yukon", value= "Yukon")),
-            value = NULL
+            value = 'Alberta'
         )
     )
 )
@@ -42,14 +45,53 @@ year <- dbcRow(
     )
 )
 
-layout <- dbcContainer(
-    dbcRow(
-        list(
-            province,
-            year,
-            map,
-            dccGraph(id = "count-graph", figure = time_count(NULL)),
-            total_capacity
+
+row1 <- div(
+    list(
+        dbcRow(
+            list(
+                dbcCol(
+                    list(
+                        dbcRow(div("WIND TURBINES"), style = list("color" = "black", "textAlign" = "left",  "font-size" = 40, "margin-top" = 10)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("This is a data visualization app that allows members of Natural Resources Canada planning committees to visually explore a dataset outlining existing windpower capacity in Canada.")),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("Controls"), style = list("color" = "black", "textAlign" = "left",  "font-size" = 30, "margin-top" = 10)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div("Select the province to get the information about wind turbines in that province. Also, slider lets you select the desired year so that cumulative count and geographic location of turbine can be seen for that year.")),
+                        dbcRow(div(br(),
+                                   br()))
+                    )
+                ,style = list("background-color" = "grey")),
+                dbcCol(div(map)),
+                dbcCol(div(total_capacity))
+            )
         )
-    ), style = list('max-width' = '50%')
+    )
 )
+
+row2 <- div(
+    list(
+        dbcRow(
+            list(
+                dbcCol(
+                    list(
+                        dbcRow(div(province)),
+                        dbcRow(div(br(),
+                                   br())),
+                        dbcRow(div(year)),
+                        dbcRow(div(br(),
+                                   br()))
+                    ),
+                    style = list("background-color" = "grey")),
+                dbcCol(div(line)),
+                dbcCol(div(bar_plot))
+            )
+        )
+    )
+)
+layout <- div(list(row1,row2))
+    
