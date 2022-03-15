@@ -28,7 +28,7 @@ Our application will contain a dashboard which will reflect the total count of m
 
 The dashboard will include different visualizations like bar chart, map, line chart etc. There will be two drop downs for year and province. User can select the desired year and province and the data corresponding to the selection will be reflected. This dashboard will answer the research questions mentioned above. It will be a user friendly application and can be used to analyze the wind turbines in Canada using different representations. 
 
-![](assets/dashboard.gif)
+![](assets/dashboard_R.gif)
 
 Different visualizations and a small summary corresponding to them are as mentioned below:
 
