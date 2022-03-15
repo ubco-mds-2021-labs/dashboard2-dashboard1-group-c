@@ -1,9 +1,9 @@
 library(dash)
-source("src/layout.R")
 source("src/map.R")
 source("src/models.R")
 source("src/time_count.R")
 source("src/total_capacity.R")
+source("src/layout.R")
 
 app <- dash_app()
 
